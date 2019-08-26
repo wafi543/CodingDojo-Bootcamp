@@ -1,0 +1,158 @@
+<html>
+
+<head>
+    <title>My jQuery assignment!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // your jquery codes here
+            $('button').addClass('btn btn-primary');
+            $('#toggle img').hide();
+            $('#slidetoggle img').hide();
+            $('#slide_down img').hide();
+            $('#fadeIn img').hide();
+
+
+            $('#add_class button').click(function () {
+                $('#add_class p').addClass('red');
+            });
+
+            $('#toggle button').click(function () {
+                $('#toggle img').toggle();
+            });
+
+            $('#slide_up button').click(function () {
+                $('#slide_up img').slideUp();
+            });
+
+            $('#slide_down button').click(function () {
+                $('#slide_down img').slideDown();
+            });
+
+            $('#slidetoggle button').click(function () {
+                $('#slidetoggle img').slideToggle();
+            });
+
+            $('#fadeIn button').click(function () {
+                $('#fadeIn img').fadeIn();
+            });
+
+            $('#fadeOut button').click(function () {
+                $('#fadeOut img').fadeOut();
+            });
+
+            $('#append').click(function () {
+                $('#append p').append(' Wow, new paragraph is appended!')
+            });
+
+            $('#before').click(function () {
+                $('#before p').before(' Wow, new paragraph is added Before previous paragraph!')
+            });
+            
+            $('#after').click(function () {
+                $('#after p').after(' Wow, new paragraph is added After previous paragraph!')
+            });
+            
+        });
+    </script>
+
+    <style>
+        div {
+            display: block;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="add_class">
+        <h1>AddClass</h1>
+        <button>Add Class</button>
+        <p>Click the button to add class 'red' to this paragraph</p>
+        <span>_________________________________________________________</span>
+    </div>
+
+    <div id="toggle">
+        <h1>Toggle</h1>
+        <button>Toggle</button>
+        <p>Click the button to toggle a hiddenImage</p>
+        <img src="logo.png" alt="Logo">
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="slide_up">
+        <h1>Slide Up</h1>
+        <button>slideUp</button>
+        <p>Click the button to slideUp the image</p>
+        <img src="logo.png" alt="Logo">
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="slide_down">
+        <h1>Slide Down</h1>
+        <button>slideDown</button>
+        <p>Click the button to slideDown a hiddenImage</p>
+        <img src="logo.png" alt="Logo">
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="slidetoggle">
+        <h1>Slide Toggle</h1>
+        <button>Slidetoggle</button>
+        <p>Click the button to slideToggle a hiddenImage</p>
+        <img src="logo.png" alt="Logo">
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="fadeIn">
+        <h1>fadeIn</h1>
+        <button>fadeIn</button>
+        <p>Click the button to fadeIn a hiddenImage</p>
+        <img src="logo.png" alt="Logo">
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="fadeOut">
+        <h1>fadeOut</h1>
+        <button>fadeOut</button>
+        <p>Click the button to fadeOut the image</p>
+        <img src="logo.png" alt="Logo">
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="append">
+        <h1>Append</h1>
+        <button>Slide Toggle</button>
+        <p>Click the button to append a new paragraph!</p>
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="before">
+        <h1>Before</h1>
+        <button>before</button>
+        <p>Click the button to add a text before current paragraph!</p>
+        <span>_________________________________________________________</span>
+    </div>
+    
+    <div id="after">
+        <h1>After</h1>
+        <button>after</button>
+        <p>Click the button to add a text after current paragraph!</p>
+        <span>_________________________________________________________</span>
+    </div>
+    
+</body>
+
+</html>
