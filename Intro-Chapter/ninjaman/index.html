@@ -1,0 +1,202 @@
+<html>
+
+<head>
+    <title>NinjaMan</title>
+
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .row {
+            line-height: 0;
+        }
+
+        .wall {
+            background-color: blue;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+        }
+
+        .sushi,
+        .onigiri,
+        .blank,
+        .bluey,
+        .pinky,
+        .pumpky,
+        .red,
+        .scaredy {
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-size: contain;
+        }
+
+        .sushi {
+            background-image: url('sushi.png');
+        }
+
+        .onigiri {
+            background-image: url('onigiri.png');
+        }
+
+        .bluey {
+            background-image: url('bluey.gif');
+        }
+
+        .pinky {
+            background-image: url('pinky.gif');
+        }
+
+        .pumpky {
+            background-image: url('pumpky.gif');
+        }
+
+        .red {
+            background-image: url('red.gif');
+        }
+
+        .scaredy {
+            background-image: url('scaredy.png');
+        }
+
+        #ninjaman {
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url('ninja.gif');
+            background-size: contain;
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+
+        #end {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="world"></div>
+    <div id="ninjaman"></div>
+    <h1 id="score">Score: 0</h1>
+    <h1 id="lives">Remaining Lives: 3</h1>
+    <h1 id="end"></h1>
+</body>
+<script type="text/javascript">
+    var score = 0;
+    var lives = 3;
+    var world = [];
+    var worldDict = {
+        0: 'blank',
+        1: 'wall',
+        2: 'sushi',
+        3: 'onigiri',
+        4: 'bluey',
+        5: 'pinky',
+        6: 'pumpky',
+        7: 'red',
+        8: 'scaredy'
+    }
+
+    function randomWorld(size) {
+        for (var row = 0; row < size; row++) {
+            world[row] = [];
+            for (var column = 0; column < size; column++) {
+                if (row == 0 || row == size - 1) { world[row][column] = 1 }
+                else if (column == 0 || column == size - 1) { world[row][column] = 1 }
+                else {
+                    world[row][column] = getRandomInt(0, 8);
+                }
+            }
+        }
+    }
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function drawWorld() {
+        output = "";
+        for (var row = 0; row < world.length; row++) {
+            output += "<div class = 'row'>";
+            for (var x = 0; x < world[row].length; x++) {
+                output += "<div class = '" + worldDict[world[row][x]] + "'></div>";
+            }
+            output += "</div>";
+        }
+        document.getElementById('world').innerHTML = output;
+    }
+
+    var ninjaMan = {
+        x: 1,
+        y: 1
+    }
+
+    function drawNinjaMan() {
+        document.getElementById('ninjaman').style.top = ninjaMan.y * 40 + 'px';
+        document.getElementById('ninjaman').style.left = ninjaMan.x * 40 + 'px';
+    }
+    randomWorld(10);
+    drawWorld();
+    drawNinjaMan()
+    if (lives > 0) {
+        document.onkeydown = function (e) {
+            if (lives > 0) {
+                if (e.keyCode == 37) { // Left
+                    if (world[ninjaMan.y][ninjaMan.x - 1] != 1) {
+                        ninjaMan.x--;
+                    }
+                }
+                if (e.keyCode == 39) { // Right
+                    if (world[ninjaMan.y][ninjaMan.x + 1] != 1) {
+                        ninjaMan.x++;
+                    }
+                }
+                if (e.keyCode == 38) { // Up
+                    if (world[ninjaMan.y - 1][ninjaMan.x] != 1) {
+                        ninjaMan.y--;
+                    }
+                }
+                if (e.keyCode == 40) { // Down
+                    if (world[ninjaMan.y + 1][ninjaMan.x] != 1) {
+                        ninjaMan.y++;
+                    }
+                }
+            }
+
+            var step = world[ninjaMan.y][ninjaMan.x]
+            if (step == 2) {
+                score += 10;
+            } else if (step == 3) {
+                score += 5;
+            } else if (step == 4 || step == 5 || step == 6 || step == 7 || step == 8) {
+                lives--;
+            }
+
+            document.getElementById("score").innerHTML = "Score: " + score;
+            document.getElementById("lives").innerHTML = "Remaining Lives: " + lives;
+            world[ninjaMan.y][ninjaMan.x] = 0;
+            drawWorld();
+            drawNinjaMan();
+            if (lives > 0) {
+            } else {
+
+                document.getElementById("end").innerHTML = "Game Over";
+                randomWorld(0);
+            }
+
+        }
+    } else {
+        document.getElementById("end").innerHTML = "Game Over";
+        randomWorld(0);
+    }
+</script>
+
+</html>

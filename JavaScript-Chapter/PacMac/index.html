@@ -1,0 +1,155 @@
+<html>
+
+<head>
+    <title>PacMac Demo</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+</head>
+
+<body>
+    <div id="world"></div>
+    <div id="pacman"></div>
+    <h2 id="score">Score: 0</h2>
+    <h2 id="lives">Remaining Lives: 5</h2>
+    <h1 id="end"></h1>
+</body>
+<script>
+    var score = 0;
+    var lives = 5;
+    var scale = 1; // for pacman lookup to direction
+    var maze1 = [
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        [2, 0, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 0, 1, 1, 2, 0, 1, 1, 1, 2],
+        [2, 1, 0, 2, 0, 1, 1, 2, 0, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 2],
+        [2, 1, 1, 2, 2, 2, 1, 2, 1, 1, 2, 0, 0, 2, 0, 2, 1, 1, 1, 1, 2],
+        [2, 1, 1, 1, 1, 2, 1, 2, 1, 0, 2, 1, 0, 2, 0, 0, 0, 0, 0, 0, 2],
+        [2, 1, 0, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 0, 1, 1, 2],
+        [2, 1, 0, 1, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 2],
+        [2, 1, 0, 1, 1, 2, 0, 2, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 2],
+        [2, 1, 1, 2, 2, 2, 0, 2, 1, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2],
+        [2, 1, 0, 2, 0, 1, 0, 0, 1, 0, 0, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2],
+        [2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 0, 1, 0, 1, 1, 2],
+        [2, 1, 1, 2, 2, 2, 0, 1, 0, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2],
+        [2, 1, 0, 1, 0, 2, 1, 0, 1, 1, 1, 2, 0, 2, 2, 2, 2, 2, 1, 0, 2],
+        [2, 1, 1, 1, 0, 2, 0, 1, 1, 0, 1, 2, 1, 0, 1, 1, 0, 2, 1, 1, 2],
+        [2, 1, 0, 2, 2, 2, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 0, 2, 1, 1, 2],
+        [2, 1, 0, 2, 0, 1, 1, 0, 1, 0, 1, 2, 1, 0, 1, 1, 0, 2, 0, 1, 2],
+        [2, 1, 0, 2, 0, 1, 0, 1, 1, 1, 1, 2, 1, 0, 1, 1, 1, 1, 0, 1, 2],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    ];
+
+    var maze2 = [
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        [2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+        [2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 6, 2, 2, 2, 2, 2, 1, 1, 1, 2],
+        [2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 0, 0, 2, 0, 0, 0, 2, 1, 2, 0, 2, 0, 2, 1, 1, 1, 2],
+        [2, 1, 1, 1, 2, 1, 1, 1, 2, 0, 1, 1, 0, 2, 0, 0, 0, 2, 0, 2, 0, 2, 0, 2, 0, 0, 0, 2],
+        [2, 1, 0, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 0, 2, 0, 2, 1, 1, 1, 2],
+        [2, 1, 0, 1, 2, 0, 0, 1, 2, 1, 1, 5, 1, 2, 1, 1, 1, 2, 1, 2, 0, 2, 0, 2, 1, 1, 1, 2],
+        [2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 1, 2, 1, 1, 1, 2, 1, 2, 0, 2, 0, 2, 1, 1, 1, 2],
+        [2, 1, 4, 1, 2, 1, 0, 4, 2, 2, 2, 2, 1, 2, 1, 1, 1, 2, 1, 2, 0, 2, 0, 2, 1, 1, 1, 2],
+        [2, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 2],
+        [2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2],
+        [2, 1, 1, 2, 1, 1, 5, 1, 2, 5, 1, 2, 1, 1, 1, 2, 4, 1, 1, 2, 0, 0, 0, 2, 1, 1, 1, 2],
+        [2, 1, 0, 2, 0, 1, 1, 0, 2, 1, 1, 2, 0, 1, 1, 2, 1, 1, 6, 2, 0, 0, 0, 2, 0, 0, 0, 2],
+        [2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 1, 1, 1, 0, 1, 2, 0, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2],
+        [2, 1, 0, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 0, 1, 4, 2, 1, 2, 1, 1, 1, 1, 1, 2],
+        [2, 1, 0, 2, 0, 1, 1, 0, 2, 0, 1, 2, 1, 1, 1, 2, 0, 1, 0, 2, 0, 0, 2, 1, 1, 1, 1, 2],
+        [2, 1, 0, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 0, 1, 2, 1, 1, 0, 2, 0, 1, 1, 2, 1, 1, 1, 2],
+        [2, 1, 0, 1, 1, 7, 1, 1, 1, 1, 1, 1, 7, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 2],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+    ];
+    var world = maze2;
+
+    var worldDict = {
+        0: 'blank',
+        1: 'coin',
+        2: 'brick',
+        3: 'pacman',
+        4: 'cherry',
+        5: 'red',
+        6: 'green',
+        7: 'blue',
+    }
+    var pacMan = {
+        x: 1,
+        y: 1
+    }
+
+    function drawWorld() {
+        output = "";
+        for (var row = 0; row < world.length; row++) {
+            output += "<div class = 'row'>";
+            for (var x = 0; x < world[row].length; x++) {
+                output += "<div class = '" + worldDict[world[row][x]] + "'></div>";
+            }
+            output += "</div>";
+        }
+        document.getElementById('world').innerHTML = output;
+    }
+    function drawPacMan() {
+        document.getElementById('pacman').style.top = pacMan.y * 20 + 'px';
+        document.getElementById('pacman').style.left = pacMan.x * 20 + 'px';
+    }
+
+    drawWorld();
+    drawPacMan();
+
+    if (lives > 0) {
+        document.onkeydown = function (e) {
+            if (lives > 0) {
+                if (e.keyCode == 37) { // Left
+                    if (world[pacMan.y][pacMan.x - 1] != 2) {
+                        pacMan.x--;
+                        document.getElementById('pacman').style.cssText = "-webkit-transform: scaleX(-1);transform: scaleX(-1);"
+                    }
+                }
+                if (e.keyCode == 39) { // Right
+                    if (world[pacMan.y][pacMan.x + 1] != 2) {
+                        pacMan.x++;
+                        document.getElementById('pacman').style.cssText = "-webkit-transform: scaleX(1);transform: scaleX(1);"
+                    }
+                }
+                if (e.keyCode == 38) { // Up
+                    if (world[pacMan.y - 1][pacMan.x] != 2) {
+                        pacMan.y--;
+                        document.getElementById('pacman').style.cssText = "-webkit-transform: rotate(270deg);"
+                    }
+                }
+                if (e.keyCode == 40) { // Down
+                    if (world[pacMan.y + 1][pacMan.x] != 2) {
+                        pacMan.y++;
+                        document.getElementById('pacman').style.cssText = "-webkit-transform: rotate(90deg);"
+                    }
+                }
+            }
+            
+            // Score process
+            var position = world[pacMan.y][pacMan.x] // should change
+            if (position == 1) { // coin award
+                score += 10;
+            } else if (position == 4) { // cherry award
+                score += 50;
+            } else if (position == 5 || position == 6 || position == 7) { // red ghost
+                lives--;
+            }
+
+            document.getElementById("score").innerHTML = "Score: " + score;
+            document.getElementById("lives").innerHTML = "Remaining Lives: " + lives;
+            world[pacMan.y][pacMan.x] = 0;
+            drawWorld();
+            drawPacMan();
+
+            // Lives process
+            if (lives > 0) {
+            } else {
+                document.getElementById("end").innerHTML = "Game Over";
+            }
+
+        }
+    } else {
+        document.getElementById("end").innerHTML = "Game Over";
+    }
+</script>
+
+</html>

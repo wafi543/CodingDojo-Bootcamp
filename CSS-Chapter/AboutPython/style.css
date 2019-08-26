@@ -1,0 +1,167 @@
+/* * {
+    outline: 1px dotted yellow;
+} */
+
+
+
+#rightDiv  {
+display: inline-block;
+margin-left: 440px;
+}
+
+#rightDiv span {
+    display: block;
+    color: white;
+    padding-left: 80px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    right: 0px;
+}
+
+#rightDiv span a {
+    color: #d4b200;
+}
+
+#searchDiv {
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #444444;
+    width: 240px;
+    border-radius: 5px;
+}
+
+#searchDiv, #titles {
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+#searchDiv input {
+    margin-left: 15px;
+    height: 25px;
+    border-color: #efefef;
+    text-align:center;
+}
+
+#searchDiv button {
+    height: 23px;
+    border-color: #efefef;
+    background: #265175;
+    color: white;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+#titles {
+    background-image: linear-gradient(to bottom, #3876ab, #497fab, #3876ab);
+    border-radius: 5px;
+    width: 90%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-left: 50px;
+}
+
+#titles a {
+    vertical-align: middle;
+    margin-left: 55px;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.list {
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 50px;
+    vertical-align: top;
+}
+
+.list li {
+    color: #d4b200;
+    /* text-align: center; */
+}
+
+.list a {
+    color: white;
+}
+
+#content {
+    margin-left: 50px;
+    display: inline-block;
+    width: 750px;
+}
+
+p {
+    text-align: center;
+}
+.yellow {
+    color: #d4b200;
+}
+#content span {
+    display: inline-block;
+    width: inherit;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#content p {
+    vertical-align: top;
+    width: inherit;
+    display: inline-block;
+    color: white;
+}
+
+.line1 {
+    width: inherit;
+    height: 2px;
+    background-color: #1a3852
+}
+
+.section {
+    vertical-align: top;
+    margin-top: 10px;
+    width: 475px;
+    height: 300px;
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.section ul {
+    margin-left: 70px;
+    width: 50%;
+    text-align: center;
+}
+
+.line2 {
+    width: inherit;
+    height: 3px;
+    background-color: #75a8d3;
+}
+
+h3 {
+    display: inline-block;
+    width: inherit;
+    text-align: center;
+}
+
+.labeled {
+    color: #77a9d3;
+}
+
+#info {
+    height: 110px;
+    background-image: linear-gradient(to bottom, #265277, #3776aa);
+}
+
+#info a {
+    display: inline-block;
+    color: #89bae3;
+    text-decoration: none;
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+#info h6 {
+    width: inherit;
+    text-align: center;
+}

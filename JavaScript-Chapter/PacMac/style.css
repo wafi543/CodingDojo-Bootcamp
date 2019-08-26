@@ -1,0 +1,80 @@
+* {
+    /* outline: 1px dotted yellow; */
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: black;
+}
+
+.row {
+    line-height: 0;
+}
+
+div.row div {
+    width: 20px;
+    height: 20px;
+    border: 0px solid black;
+    display: inline-block;
+}
+
+.brick {
+    background-color: blue;
+}
+
+.coin, .red, .cherry, .green, .blue {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.coin {
+    background-image: url('coin.gif');
+}
+
+.red {
+    background-image: url('red.gif');
+}
+
+.cherry {
+    background-image: url('cherry.png');
+}
+
+.green {
+    background-image: url('green.png')
+}
+.blue {
+    background-image: url('blue.png')
+}
+
+#pacman {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('pacman.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+#score {
+    margin: 20px;
+    color: white;
+    padding: 20px;
+    border: 1px solid white;
+    display: inline-block;
+}
+
+#lives {
+    color: white;
+    padding: 20px;
+    border: 1px solid white;
+    display: inline-block;
+}
+
+#end {
+    color: red;
+}

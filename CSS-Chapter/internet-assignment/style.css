@@ -1,0 +1,154 @@
+/* * {
+    outline: 2px dotted red;
+} */
+
+body {
+    width: 1300px;
+}
+
+#logo {
+    height: 90px;
+    width: 90px;
+    display: inline-block;
+}
+
+#title2 {
+    font-size: 40px;
+    height: 70px;
+    width: 1300px;
+    padding-left: 10px;
+    padding-top: 20px;
+    background-image: linear-gradient(to bottom, #2d6b9e, #5485ab, #2d6b9e);
+    color: white;
+}
+
+.blue {
+    color: #26669c;
+}
+
+.light {
+    color: #00c0dd;
+}
+
+.red {
+    color: #d83030;
+}
+
+.bold {
+    font: bolder;
+    font-size: 20px;
+}
+
+#side_menu {
+    width: 350px;
+    display: inline-block;
+}
+
+#side_menu a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 5px;
+    font-size: 24px;
+    display: inline-block;
+    margin-left: 20px;
+    width: 300px;
+    height: 40px;
+
+    -webkit-box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.75);
+}
+
+
+#watch {
+    background-image: linear-gradient(to top, #27679c, #679bc3);
+}
+
+#more {
+    margin-top: 15px;
+    background-image: linear-gradient(to top, #ee7302, #e9ab5c);
+}
+
+#side_menu img {
+    width: inherit;
+}
+
+#ad {
+    -webkit-box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: 6px 6px 11px 0px rgba(0,0,0,0.75);
+    background-image: url('ad_background.png');
+    width: inherit;
+    height: 550px;
+}
+
+#ad h2 {
+    color: white;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#ad img {
+    width: 200px;
+    padding-left: 80px;
+}
+
+#ad a {
+    background-image: linear-gradient(to top, #03c0dd, #7ed1de);
+    margin-top: 10px;
+}
+
+#header {
+    position: absolute;
+    margin-left: 40px;
+}
+
+#header, #header *, #content {
+    display: inline-block;
+}
+
+#call {
+    display: inline-block;
+    margin-left: 580px;
+    width: 400px;
+}
+
+#call img {
+    vertical-align: top;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+#call li {
+    display: block;
+}
+
+#info {
+    border: 3px solid #0087dd;
+    padding: 20px;
+}
+
+#info img {
+    display: inline-block;
+    width: 200px;
+}
+
+#info h1 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#info p {
+    margin-top: -120px;
+    margin-left: 250px;
+    width: 400px;
+}
+
+#info span {
+    display: inline-block;
+    margin-top: -80;
+    margin-left: 250px;
+}

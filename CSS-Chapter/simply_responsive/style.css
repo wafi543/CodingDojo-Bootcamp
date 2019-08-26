@@ -1,0 +1,40 @@
+
+
+h1 {
+    background-color: #a4a4a4;
+    padding: 10px;
+}
+
+p {
+    background-color: #c0c1c0;
+    padding: 10px;
+}
+
+h3 {
+    background-color: #ffff88;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+    .desktop {
+        display: none;
+    }
+    .tablet {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 481px) {
+    .phone {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .tablet {
+        display: none;
+    }
+    .desktop {
+        display: block;
+    }
+}
