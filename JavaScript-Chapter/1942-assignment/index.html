@@ -1,0 +1,207 @@
+<html>
+
+<head>
+	<title>1942 Game</title>
+
+	<style type="text/css">
+		body {
+			background-color: black;
+		}
+
+		#container {
+			background: url('background.png');
+			width: 1000px;
+			height: 550px;
+		}
+
+		#hero {
+			background: url('1942.gif');
+			background-position: -85px -180px;
+			width: 28px;
+			height: 28px;
+			position: absolute;
+		}
+
+		.enemy1 {
+			background: url('1942.gif');
+			background-position: -30px -10px;
+			width: 28px;
+			height: 28px;
+			position: absolute;
+		}
+
+		.bullet {
+			background: url('1942.gif');
+			background-position: -185px -400px;
+			width: 18px;
+			height: 18px;
+			position: absolute;
+		}
+
+		#score {
+			border: 10px solid red;
+			display: inline-block;
+			background-color: white;
+			padding: 10px;
+			font-size: 30px;
+			font-family: Arial;
+		}
+
+		#lives {
+			display: inline-block;
+			border: 10px solid green;
+			background-color: white;
+			padding: 10px;
+			font-size: 30px;
+			font-family: Arial;
+		}
+
+		#end {
+			display: inline-block;
+			color: red;
+			padding: 10px;
+			font-size: 30px;
+			font-family: Arial;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='container'>
+		<div id='hero'></div>
+		<div id='enemies'></div>
+		<div id='bullets'></div>
+	</div>
+
+	<div id='score'>Score: 0</div>
+	<div id='lives'>Lives: 5</div>
+	<div id='end'></div>
+
+
+	<script>
+		var hero = {
+			x: 500,
+			y: 500
+		}
+		var lives = 5
+		var score = 0
+		var stepSize = 10
+		var enemies = [{ x: 100, y: 10 },
+		{ x: 200, y: -100 },
+		{ x: 300, y: 90 },
+		{ x: 400, y: -30 },
+		{ x: 500, y: 80 },
+		{ x: 600, y: -70 },
+		{ x: 700, y: -10 },
+		{ x: 800, y: 0 }]
+
+		var bullets = []
+		function displayHero() {
+			document.getElementById('hero').style['top'] = hero.y + "px";
+			document.getElementById('hero').style['left'] = hero.x + "px";
+		}
+
+		function displayEnemies() {
+			var output = "";
+			for (var i = 0; i < enemies.length; i++) {
+				output += output += "<div class = 'enemy1' style = 'top:" + enemies[i].y + "px; left:" + enemies[i].x + "px; '></div>";
+			}
+			document.getElementById('enemies').innerHTML = output;
+		}
+
+		function moveEnemies() {
+			for (var i = 0; i < enemies.length; i++) {
+				enemies[i].y += 5;
+
+				if (enemies[i].y > 540) {
+					enemies[i].y = Math.floor(Math.random() * -100)
+					enemies[i].x = Math.floor(Math.random() * 800)
+				}
+			}
+		}
+
+		function displayBullets() {
+			var output = "";
+			for (var i = 0; i < bullets.length; i++) {
+				output += output += "<div class = 'bullet' style = 'top:" + bullets[i].y + "px; left:" + bullets[i].x + "px; '></div>";
+			}
+			document.getElementById('bullets').innerHTML = output;
+		}
+
+		function moveBullets() {
+			for (var i = 0; i < bullets.length; i++) {
+				bullets[i].y -= 10;
+
+				if (bullets[i].y < 0) {
+					bullets[i] = bullets[bullets.length - 1];
+					bullets.pop();
+				}
+			}
+		}
+
+		function detectCollision() {
+			for (var i = 0; i < bullets.length; i++) {
+				for (var j = 0; j < enemies.length; j++) {
+					if (Math.abs(bullets[i].x == enemies[j].x) < 5 && Math.abs(bullets[i].y == enemies[j].y) < 5) {
+						console.log('bullet', i, 'and enemy', j,'collided')
+					}
+				}
+			}
+		}
+
+		function gameLoop() {
+			if (lives > 0) {
+				displayHero();
+				displayEnemies();
+				moveEnemies();
+				displayBullets();
+				moveBullets();
+				detectCollision();
+
+				document.getElementById("score").innerHTML = "Score: " + score;
+				document.getElementById("lives").innerHTML = "Remaining Lives: " + lives;
+			} else {
+				document.getElementById("end").innerHTML = "Game Over";
+			}
+		}
+
+		setInterval(gameLoop, 40)
+
+		document.onkeydown = function (e) {
+			if (lives > 0) {
+				if (e.keyCode == 37) { // Left
+					hero.x -= stepSize
+				} else if (e.keyCode == 39) { // Right
+					hero.x += stepSize
+				}
+				else if (e.keyCode == 38) { // Up
+					hero.y -= stepSize
+				}
+				else if (e.keyCode == 40) { // Down
+					hero.y += stepSize
+				} else if (e.keyCode == 32) {// Space , Fire
+					bullets.push({ x: hero.x + 5, y: hero.y - 10 })
+					displayBullets();
+				}
+				displayHero();
+			}
+
+			/*
+			// Score process
+			var position = world[pacMan.y][pacMan.x] // should change
+			if (position == 1) { // coin award
+				score += 10;
+			} else if (position == 4) { // cherry award
+				score += 50;
+			} else if (position == 5 || position == 6 || position == 7) { // red ghost
+				lives--;
+			} */
+
+		}
+
+
+	</script>
+
+</body>
+
+</html>
