@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Hover In/Out</title>
+    <style>
+        img {
+            width: 140px;;
+            height: 200px;
+        }
+    </style>
+    <script>
+            $(document).ready( function() {
+                $('img').hover(function() {
+                    $(this).attr('src','image2.jpeg')
+                }, function() {
+                    $(this).attr('src','image1.jpeg')
+                })
+            })
+            </script>
+</head>
+
+<body>
+    <img style="background-color: cadetblue" src="image1.jpeg">
+    <img style="background-color: chartreuse" src="image1.jpeg">
+    <img style="background-color: crimson" src="image1.jpeg">
+    <img style="background-color: blanchedalmond" src="image1.jpeg">
+
+    
+</body>
+
+</html>
