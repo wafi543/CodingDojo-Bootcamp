@@ -1,0 +1,100 @@
+
+body {
+    background-color: #f9f9f9;
+}
+
+#header {
+    background-color: #f9f9f9;
+}
+
+#header, #content {
+    width: 1000px;
+}
+
+#header * {
+    display: inline-block;
+    padding-left: 20px;
+    width: 47%;
+}
+
+#name {
+    text-align: left;
+}
+
+#jobTitle {
+    text-align: right;
+}
+
+#content {
+    background-image: linear-gradient(to bottom,#4d3a42,#6f5964, #4d3a42);
+    padding: 10px;
+}
+
+#avatar {
+    margin: 10px;
+    width: 45%;
+    height: 280px;
+}
+
+#content div {
+    margin: 10px;
+    display: inline-block;
+    background-image: linear-gradient(to right, #fefdfe, #ddcfdc);
+    vertical-align: top;
+    width: 30%;
+}
+
+#content div:first-of-type {
+    height: 280px;
+    width: 50.5%;
+}
+
+h2 {
+    position: relative;
+    top: 0px;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom , #b4b3b7 , #878593, #b4b3b7);
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: white;
+}
+
+.poster {
+    width: 100%;
+}
+
+.tech {
+    box-sizing: border-box;
+    width: 18.9%;
+    padding: 5px;
+}
+
+button {
+    position: relative;
+    display: block;
+    left: 35%;
+    background-color: #407d61;
+    border-color: black;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.site {
+    position: relative;
+    left: 300px;
+}
+
+.site img {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.site label {
+    top: 0px;
+    position: relative;
+    text-decoration: underline;
+}
