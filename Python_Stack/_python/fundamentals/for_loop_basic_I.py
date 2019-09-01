@@ -9,10 +9,10 @@ for x in range(5,1001,5):
 # Counting, the Dojo Way
 for x in range(1,101,1):
     print(x)
-    if x % 5 == 0:
-        print("Coding")
     if x % 10 == 0:
         print("Coding Dojo")
+    elif x % 5 == 0:
+        print("Coding")
 
 # Whoa. That Sucker's Huge
 sum = 0
