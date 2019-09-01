@@ -21,13 +21,15 @@ def count_positives(list):
 
 print(count_positives([-1, 1, 1, 1]))
 
+
 def sum_total(list):
     sum = 0
     for x in list:
         sum += x
     return sum
 
-print(sum_total([1,2,3,4]))
+
+print(sum_total([1, 2, 3, 4]))
 
 
 def average(list):
@@ -36,14 +38,18 @@ def average(list):
         sum += x
     return sum/len(list)
 
-print(average([1,2,3,4]))
+
+print(average([1, 2, 3, 4]))
+
 
 def length(list):
     return len(list)
 
-print(length([37,2,1,-9]))
 
-def minimum (list):
+print(length([37, 2, 1, -9]))
+
+
+def minimum(list):
     if len(list) < 1:
         return False
     else:
@@ -53,10 +59,11 @@ def minimum (list):
                 min = x
         return min
 
-print(minimum([37,2,1,-9]))
+
+print(minimum([37, 2, 1, -9]))
 
 
-def maximum (list):
+def maximum(list):
     if len(list) < 1:
         return False
     else:
@@ -65,21 +72,25 @@ def maximum (list):
             if x > max:
                 max = x
         return max
-        
-print(maximum([37,2,1,-9]))
+
+
+print(maximum([37, 2, 1, -9]))
+
 
 def ultimate_analysis(list):
-    return {"sumTotal":sum_total(list),"average":average(list),"minimum":minimum(list),"maximum":maximum(list)}
+    return {"sumTotal": sum_total(list), "average": average(list), "minimum": minimum(list), "maximum": maximum(list)}
 
-print(ultimate_analysis([37,2,1,-9]))
+
+print(ultimate_analysis([37, 2, 1, -9]))
 
 
 def reverse_list(list):
-    for i in range(0,len(list),1):
+    for i in range(0, len(list), 1):
         lastIndex = len(list)-1
         tmp = list[i]
         list[i] = list[lastIndex-i]
         list[lastIndex-i] = tmp
     return list
 
-print(reverse_list([37,2,1,-9]))
+
+print(reverse_list([37, 2, 1, -9]))
