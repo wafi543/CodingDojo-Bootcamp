@@ -19,7 +19,7 @@ class BankAccount:
         self.balance = self.balance * self.int_rate
 
 account1 = BankAccount(0.14,4500)
-account2 = BankAccount(0.4,8504)
+account2 = BankAccount(0.09,8504)
 
 account1.deposit(345)
 account1.deposit(120)
