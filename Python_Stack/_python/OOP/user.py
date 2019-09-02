@@ -31,9 +31,7 @@ class User:		# here's what we have so far
 guido = User("wafi","wafi543@outlook.sa")
 monty = User("mohammed","moha3434@coding.dojo")
 nawaf = User("Nawaf","nawaf345@hotmail.com")
-guido.make_deposit(100)
-guido.make_deposit(200)
-monty.make_deposit(50)
+guido.make_deposit(100).make_deposit(200).make_deposit(50)
 print(guido.account.balance)	# output: 300
 print(monty.account.balance)	# output: 50
 
