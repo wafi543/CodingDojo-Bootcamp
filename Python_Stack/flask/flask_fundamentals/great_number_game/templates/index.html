@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style> 
+            .red {
+                width: 200px;
+                height: 200px;;
+                background-color: red
+            }
+            .green {
+                width: 200px;
+                height: 200px;
+                background-color: green;
+            }
+        </style>
+</head>
+
+<body>
+    <form action="/process" method="post">
+        <div class="text-center">
+            <br>
+            <h1>Welcome to the Great Number Game!</h1>
+            <p>I am thinking of a number between 1 and 100</p>
+            <p>Take a guess!</p>
+            {% if guess > 0 and guess < number %}
+            <h2 class="red">Too Low!</h2>
+            {% endif %}
+            {% if guess > number %}
+            <h2 class="red">Too High!</h2>
+            {% endif %}
+            {% if guess == number %}
+            <div class="green">
+                <h1 style="color: white">{{guess}} was the number!</h1>
+                <h4 style="color: white">Attempts: {{count}}</h4>
+                <a href="/clear" class="btn btn-primary">Play again!</a>
+            </div>
+            {% endif %}
+
+            <input type="text" value="" name="guess">
+            <br><br>
+            <input type='submit' value='Submit' class="btn btn-primary">
+        </div>
+    </form>
+</body>
+
+</html>
