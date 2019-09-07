@@ -24,24 +24,44 @@
             <h1>Welcome to the Great Number Game!</h1>
             <p>I am thinking of a number between 1 and 100</p>
             <p>Take a guess!</p>
-            {% if guess > 0 and guess < number %}
-            <h2 class="red">Too Low!</h2>
-            {% endif %}
-            {% if guess > number %}
-            <h2 class="red">Too High!</h2>
-            {% endif %}
-            {% if guess == number %}
-            <div class="green">
-                <h1 style="color: white">{{guess}} was the number!</h1>
+            {% if count < 5 %}
+                {% if guess > 0 and guess < number %}
+                <h2 class="red">Too Low!</h2>
+                {% endif %}
+                {% if guess > number %}
+                <h2 class="red">Too High!</h2>
+                {% endif %}
+                {% if guess == number %}
+                <div class="green">
+                    <h1 style="color: white">{{guess}} was the number!</h1>
+                    <h4 style="color: white">Attempts: {{count}}</h4>
+                    <a href="/clear" class="btn btn-primary">Play again!</a>
+                </div>
+                {% endif %}
+            {% else %}
+            <div class="red">
+                <h1 style="color: white">You Lose!</h1>
                 <h4 style="color: white">Attempts: {{count}}</h4>
                 <a href="/clear" class="btn btn-primary">Play again!</a>
             </div>
             {% endif %}
 
+
+            {% if count < 5 and number != guess %}
             <input type="text" value="" name="guess">
             <br><br>
             <input type='submit' value='Submit' class="btn btn-primary">
+            {% endif %}
         </div>
+    </form>
+    <form action="/leaderboard" method="post">
+        {% if guess == number %}
+        <div class="form-control">
+            <input style="display: inline" type="text" class="form-control" name="player" placeholder="Enter your name to save your result">
+            <br><br>
+            <input type='submit' value='Submit' class="btn btn-primary">
+        </div>
+        {% endif %}
     </form>
 </body>
 

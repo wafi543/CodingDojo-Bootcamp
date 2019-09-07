@@ -32,8 +32,20 @@ def process():
 
 @app.route('/clear')
 def clear():
-    session.clear()
+    session.pop('number')
+    session.pop('guess')
+    session.pop('count')
     return redirect('/')
 
+@app.route('/leaderboard', methods=['POST'])
+def leaderboard():
+    name = request.form['player']
+    if 'players' in session:
+        players = session['players']
+        players[request.form['player']] = session['guess']
+    else:
+        session['players'] = {request.form['player']:session['guess']}
+
+    return render_template("leaderboard.html", players=session['players'])
 if __name__ == "__main__":
     app.run(debug=True)

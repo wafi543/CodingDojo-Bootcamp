@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style> 
+            .red {
+                background-color: red
+            }
+            .green {
+                background-color: green;
+            }
+        </style>
+</head>
+
+<body>
+    <form action="/process" method="post">
+        <div class="text-center">
+            <br>
+            <h1>Laderboard</h1>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Last Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% for key, value in players.items() %}
+                <tr>
+                    <td>{{key}}</td>
+                    <td>{{value}}</td>
+                </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+
+            <br>
+            <a href="/clear" class="btn btn-primary">Go To Home</a>
+        </div>
+    </form>
+</body>
+
+</html>
