@@ -28,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/Users/Abo-Saud/Documents/GitHub/CodingDojo-Bootcamp/Python_Stack/my_environments/py3Env"
+$VIRTUAL_ENV = r"/Users/Abo-Saud/Documents/GitHub/CodingDojo-Bootcamp/Python_Stack/flask/py3Env"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]
