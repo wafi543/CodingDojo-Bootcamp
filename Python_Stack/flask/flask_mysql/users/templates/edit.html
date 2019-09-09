@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1 {
+            width: inherit;
+            text-align: center;
+        }
+        form {
+            margin: 30px;
+            text-align: center;
+        }
+        a {
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/">Home</a>
+    <br><br>
+    <h1>Edit User {{user[0]['id']}}</h1>
+    <form action="/users/{{user[0]['id']}}/update" method="POST">
+        <p>First Name: <input type="text" name="fname" value="{{user[0]['first_name']}}"></p>
+        <p>Last Name: <input type="text" name="lname" value="{{user[0]['last_name']}}"></p>
+        <p>Email: <input type="text" name="email" value="{{user[0]['email']}}"></p>
+        <input type="submit" value="Update" class="btn btn-primary">
+    </form>
+    <a href="/users/{{user[0]['id']}}">Show User</a>
+    
+</body>
+
+</html>

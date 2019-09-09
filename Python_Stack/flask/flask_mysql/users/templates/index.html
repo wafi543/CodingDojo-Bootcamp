@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1 {
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All Users</h1>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in all_users %}
+            <tr>
+                <td>{{user["id"]}}</td>
+                <td>{{user["first_name"]}} {{user["last_name"]}}</td>
+                <td>{{user["email"]}}</td>
+                <td>{{user["created_at"]}}</td>
+                <td><a href="/users/{{user['id']}}">Show</a> | <a href="/users/{{user['id']}}/edit">Edit</a> | <a href="/users/{{user['id']}}/destroy">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <hr>
+	<a style="margin-left: 30px;" href="/users/new">Add a new user</a>
+
+</body>
+
+</html>
