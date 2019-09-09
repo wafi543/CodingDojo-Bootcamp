@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        table {
+
+        }
+        h1 {
+            width: inherit;
+            text-align: center;
+        }
+        form {
+            margin: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All the pets</h1>
+    <table class="table" style="width: 600px">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pet in all_pets %}
+            <tr>
+                <td>{{pet["pet_id"]}}</td>
+                <td>{{pet["name"]}}</td>
+                <td>{{pet["type"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+    <h1>Add a Pet</h1>
+    <form action="/create_pets" method="POST">
+        <p>Name: <input type="text" name="name"></p>
+        <p>Type: <input type="text" name="type"></p>
+        <input type="submit" value="Add Pet" class="btn btn-primary">
+    </form>
+
+
+
+</body>
+
+</html>
