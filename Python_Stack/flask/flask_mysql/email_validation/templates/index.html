@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 10px;
+        }
+
+        form {
+            margin: 30px;
+            padding: 30px;
+            outline: 2px solid black;
+            display: inline-block;
+        }
+        .error {
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/process" method="POST">
+        
+        <p>Email Adress: <input style="width: 300px;" type="text" name="my_email " required="required"></p>
+        <br><br>
+        <input type="submit" value="Submit">
+        {% with messages = get_flashed_messages() %}
+        <!-- declare a variable called messages -->
+        {% if messages %}
+        <!-- check if there are any messages -->
+        {% for message in messages %}
+        <!-- loop through the messages -->
+        <p class="error red">{{message}}</p> <!-- display each message in a paragraph tag -->
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </form>
+</body>
+
+</html>
