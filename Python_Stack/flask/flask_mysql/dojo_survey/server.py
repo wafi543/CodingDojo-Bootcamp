@@ -7,18 +7,13 @@ my_db = 'dojo_survey'
 def users():
     return render_template("index.html")
 
-
 @app.route("/process", methods=["POST"])
 def process():
-    is_valid = True
     if len(request.form['name']) < 1:
-        is_valid = False
         flash("Please enter a valid name")
     if len(request.form['location']) < 1:
-        is_valid = False
         flash("Please choose a location")
     if len(request.form['language']) < 1:
-        is_valid = False
         flash("Please choose a language")
     if not '_flashes' in session.keys():
         query = 'INSERT INTO surveys (name, location, language, comment) VALUES (%(n)s, %(loc)s, %(lan)s, %(c)s);'
