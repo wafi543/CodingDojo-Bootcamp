@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Wall On</title>
+    <style>
+        #header {
+            padding: 20px;
+        }
+
+        #header * {
+            display: inline-block;
+        }
+
+        #header h4 {
+            margin-left: 500px;
+        }
+
+        #header a {
+            margin-left: 30px;
+        }
+
+        .section {
+            outline: 1px solid black;
+            padding: 30px;
+            width: 45%;
+            display: inline-block;
+            margin: 20px;
+            vertical-align: top;
+        }
+
+        .section h4 {
+            text-decoration: underline;
+        }
+
+        .section p {
+            width: 80%;
+            display: inline-block
+        }
+
+        .section a {
+            display: inline-block;
+        }
+
+        form * {
+            display: inline-block;
+        }
+        p {
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1 id="title">CodingDojo Wall</h1>
+        <h4>Welcome, {{user['first_name']}}</h4>
+        <a style="text-decoration: underline" href="/logout">Logout</a>
+    </div>
+    <hr>
+    <div class="section">
+        {% if messages is defined %}
+        <h4> {{messages|length}} message(s) for you</h4>
+        {% for message in messages %}
+        <p>{{message['name']}} said :</p>
+        <p style="margin-left: 20px;">"{{message['text']}}"</p>
+        <a href="/delete/{{message['id']}}">delete</a>
+        <hr>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="section">
+        <h4>Send Messages</h4>
+        <h5 style="color:green">You have sent {{sentCount}} messages so far</h5>
+        {% if users is defined %}
+        {% for other_user in users %}
+        <form action="/send" method="POST">
+            <p>{{other_user['first_name']}}</p>
+            <textarea name="text" cols="40" rows="4"></textarea>
+            <input type="hidden" name="fromId" value="{{user['id']}}">
+            <input type="hidden" name="toId" value="{{other_user['id']}}">
+            <input type="submit" value="Submit">
+            <hr>
+        </form>
+        {% endfor %}
+        {% endif %}
+        <br>
+    </div>
+</body>
+
+</html>
