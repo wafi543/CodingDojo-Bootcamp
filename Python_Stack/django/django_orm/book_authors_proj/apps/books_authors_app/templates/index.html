@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Books & Authors</title>
+    <style>
+        h1 {
+            margin: 30px;
+        }
+
+        .section {
+            margin-left: 20px;
+            display: inline-block;
+            width: 45%;
+            outline: 2px dotted red;
+            vertical-align: top;
+        }
+        p {
+            vertical-align: top;
+        }
+        textarea {
+            vertical-align: top;
+        }
+        .btn {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add a Book</h1>
+    <br>
+    <div class="section">
+        <form action="/add_book" method="POST">
+            {% csrf_token %}
+            <p>Title <input type="text" name="title"></p>
+            <p>Description <textarea name="desc" cols="30" rows="10"></textarea></p>
+            <input class="btn btn-primary" type="submit" value="Add">
+        </form>
+    </div>
+    <div class="section">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <th scope="row">{{book.id}}</th>
+                    <td>{{book.title}}</td>
+                    <td><a href="/books/{{book.id}}">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

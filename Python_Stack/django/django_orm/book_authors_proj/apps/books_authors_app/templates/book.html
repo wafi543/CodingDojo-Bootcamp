@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Books & Authors</title>
+    <style>
+        body {
+            padding: 40px;
+        }
+        #description {
+            display: inline-block;
+        }
+        #desc {
+            display: inline-block;
+        }
+        .btn, select {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{book.title}}</h1>
+    <h4>ID: {{book.id}}</h4>
+    <h4 id="description">Description: </h4>
+    <p id="desc">{{book.desc}}</p>
+    <br>
+    <h4>Authors:</h4>
+    <ul>
+        {% for author in book_authors %}
+        <li>{{author.first_name}} {{author.last_name}}</li>
+        {% endfor %}
+    </ul>
+    <form action="/books/{{book.id}}/add_author" method="POST">
+        {% csrf_token %}
+        <select name="author_id">
+                <option value="">select an author</option>
+                {% for author in authors %}
+                <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                {% endfor %}
+            </select>
+        <input type="submit" value="Add" class="btn btn-primary">
+    </form>
+    <br><br>
+    <a class="btn btn-primary" href="/">Home</a>
+</body>
+
+</html>
