@@ -19,6 +19,7 @@ book.save()
 // Change the first name of the 4th author to Bill
 author = Author.objects.get(id=4)
 author.first_name = "Bill"
+author.save()
 
 // Assign the first author to the first 2 books
 author1 = Author.objects.get(id=1)
@@ -66,11 +67,11 @@ book4.save()
 book5.save()
 
 // Retrieve all the authors for the 3rd book
-book3.authors
+book3.authors.all
 
 // Add the 5th author as one of the authors of the 2nd book
 author5 = Author.objects.get(id=5)
-book2.authors = author5
+book2.authors.add(author5)
 
 // Find all the books that the 3rd author is part of
 author3.books
