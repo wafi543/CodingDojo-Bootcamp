@@ -60,3 +60,41 @@ eeyore.east = heffalumps;
 
 heffalumps.west = kango.north;
 
+
+var player = {
+    location: tigger
+}
+
+function move(direction) {
+    if (direction == 'north') {
+        if (player.location.north) {
+            player.location = player.location.north
+            console.log("You are now at "+player.location.character+"'s house")
+        }else {
+            console.log('You may not go that way!')
+        }
+    }else if (direction == 'south') {
+        if (player.location.south) {
+            player.location = player.location.south
+            console.log("You are now at "+player.location.character+"'s house")
+        }else {
+            console.log('You may not go that way!')
+        }
+    }else if (direction == 'east') {
+        if (player.location.east) {
+            player.location = player.location.east
+            console.log("You are now at "+player.location.character+"'s house")
+        }else {
+            console.log('You may not go that way!')
+        }
+    }else if (direction == 'west') {
+        if (player.location.west) {
+            player.location = player.location.west
+            console.log("You are now at "+player.location.character+"'s house")
+        }else {
+            console.log('You may not go that way!')
+        }
+    }
+    return str
+}
+
