@@ -4,6 +4,7 @@
 
 </body>
 <script>
+    var names = ['Tigger','Winnie the Pooh','Piglet','Owl','Christopher Robin','Rabbit','Gopher','Kango','Eeyore','Heffalumps']
     var tigger = {
         character: "Tigger",
         greet: function () {
@@ -25,7 +26,7 @@
     var bees = {
         character: "Bees",
         greet: function () {
-            console.log("Hello brother!");
+            console.log("Bzz bzzzzz bzzz bzzz");
         }
     };
     var owl = {
@@ -65,7 +66,7 @@
         }
     };
     var heffalumps = {
-        character: "heffalumps",
+        character: "Heffalumps",
         greet: function () {
             console.log("I'm here");
         }
@@ -123,7 +124,29 @@
 
 
     var player = {
-        location: tigger
+        location: tigger,
+        destination: '',
+        honey: false,
+        pickUp: function() {
+            if (location.character == "Bees") {
+                honey = true
+                console.log("You've gathered some honey!")
+            }
+            else {console.log('There is no honey at this location')}
+        },
+        mission: function() {
+            var position = Math.floor(Math.random() * (names.length - 0) + 0);
+            destination = names[position]
+            console.log('Your destination is: '+destination)
+        },
+        drop: function() {
+            if (honey && location.character == destination) {
+                console.log('Congratulations! You delivered the honey to '+location.character+'!')
+                honey = false
+            }else {
+                console.log("Whoops! This isn't the place that needs the honey!")
+            }
+        }
     }
 
     function move(direction) {
