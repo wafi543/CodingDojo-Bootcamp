@@ -12,6 +12,15 @@ function Ninja (name) {
     this.drinkSake = function() {
         this.health += 10
     }
+    this.punch = function(ninja) {
+        ninja.health -= 5
+        console.log(ninja.name+' was punched by '+this.name+' and lost 5 Health!')
+    }
+    this.kick = function(ninja) {
+        var amount = this.strength*15
+        ninja.health -= amount
+        console.log(ninja.name+' was kicked by '+this.ninja+' and lost '+amount)
+    }
 }
 
 var ninja1 = new Ninja("Hyabusa");
