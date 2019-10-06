@@ -13,3 +13,6 @@ app.get("/cats", (req, res) => {
 app.get("/cars", (req, res) => {
     res.render('cars');
 })
+app.get("/cars/new", (req, res) => {
+    res.render('new');
+})
