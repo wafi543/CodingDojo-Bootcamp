@@ -1,0 +1,12 @@
+use my_first_db
+db.createCollection("students")
+db.students.insert({name:"wafi", home_state: "Alaska", lucky_number:3, birthday: {month:4, day:14, year:1994}})
+db.students.insert({name:"mohammed", home_state: "California", lucky_number:9, birthday: {month:6, day:17, year:1995}})
+db.students.insert({name:"khalid", home_state: "Texas", lucky_number:5, birthday: {month:10, day:25, year:1993}})
+db.students.insert({name:"Ali", home_state: "Washington", lucky_number:6, birthday: {month:12, day:4, year:1998}})
+db.students.insert({name:"Nawaf", home_state: "Ohio", lucky_number:7, birthday: {month:3, day:14, year:1996}})
+db.students.find()
+db.students.find({home_state:"California"})
+db.students.find({lucky_number: {$gt: 3}})
+db.students.find({lucky_number: {$lte: 10}})
+db.students.find({lucky_number: {$range:[1,10]}})
