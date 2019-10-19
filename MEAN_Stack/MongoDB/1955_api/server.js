@@ -44,7 +44,7 @@ app.get('/remove/:name/', (req, res) => {
 
 app.get('/:name', (req, res) => {
     const name = req.params.name
-    User.find({name: name})
+    User.findOne({name: name})
         .then(data => res.json(data))
         .catch(err => res.json(err));
 })
