@@ -15,3 +15,16 @@
 127.0.0.1 - - [03/Nov/2019:18:07:54 +0300] "GET / HTTP/1.1" 404 1074
 0:0:0:0:0:0:0:1 - - [03/Nov/2019:18:07:54 +0300] "GET /SimpleProject/Home HTTP/1.1" 200 111
 0:0:0:0:0:0:0:1 - - [03/Nov/2019:18:08:27 +0300] "GET /SimpleProject/Home?firstName=Wafi&lastName=Alshammari&favouriteLanguage=swift&homeTown=Jouf HTTP/1.1" 200 110
+127.0.0.1 - - [03/Nov/2019:22:02:17 +0300] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:02:18 +0300] "GET /setup/demo.jsp HTTP/1.1" 200 243
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:02:57 +0300] "GET /setup/demo.jsp HTTP/1.1" 200 243
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:05:39 +0300] "GET /setup/Home HTTP/1.1" 200 31
+127.0.0.1 - - [03/Nov/2019:22:06:01 +0300] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:06:02 +0300] "GET /Checkerboard/Draw.jsp HTTP/1.1" 200 131
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:07:18 +0300] "GET /Checkerboard/Draw.jsp HTTP/1.1" 200 132
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:07:42 +0300] "GET /Checkerboard/Draw.jsp HTTP/1.1" 200 127
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:07:52 +0300] "GET /Checkerboard/Draw.jsp HTTP/1.1" 200 134
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:07:53 +0300] "GET /Checkerboard/Draw.jsp HTTP/1.1" 200 134
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:09:02 +0300] "GET /Checkerboard/Draw.jsp HTTP/1.1" 200 134
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:09:12 +0300] "GET /Checkerboard/Draw.jsp?name=dfgdfg HTTP/1.1" 200 134
+0:0:0:0:0:0:0:1 - - [03/Nov/2019:22:09:13 +0300] "GET /Checkerboard/Draw.jsp?name=dfgdfg HTTP/1.1" 200 134

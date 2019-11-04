@@ -30,16 +30,13 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
         // Sets the content type of the response
-		String fname = request.getParameter("firstName");
-		String lname = request.getParameter("lastName");
-		String language = request.getParameter("favouriteLanguage");
-		String homeTown = request.getParameter("homeTown");
+		String name = request.getParameter("name");
 		
 		
         response.setContentType("text/html");
         // writes the response
         PrintWriter out = response.getWriter();
-        out.write("<h1>Hello World, from " + userName + "</h1>");
+        out.write("<h1>Hello World, from " + name + "</h1>");
 	}
 
 	/**
