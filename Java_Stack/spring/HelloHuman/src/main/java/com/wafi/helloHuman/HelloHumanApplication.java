@@ -14,8 +14,8 @@ public class HelloHumanApplication {
 		SpringApplication.run(HelloHumanApplication.class, args);
 	}
 	
-	@RequestMapping("/")
-	public String hello(@RequestParam(value="q", required=false) String searchQuery) {
+	@RequestMapping("")
+	public String hello(@RequestParam(value="name", required=false) String searchQuery) {
         if (searchQuery == null) {
         	return "Hello Human!";
         }else {
