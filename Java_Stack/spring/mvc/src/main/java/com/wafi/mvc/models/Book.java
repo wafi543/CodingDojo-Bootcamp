@@ -20,21 +20,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
     @Size(min = 5, max = 200)
-    public String title;
+    private String title;
     @Size(min = 5, max = 200)
-    public String description;
+    private String description;
     @Size(min = 3, max = 40)
-    public String language;
+    private String language;
     @Min(100)
-    public Integer numberOfPages;
+    private Integer numberOfPages;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    public Date createdAt;
+    private Date createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    public Date updatedAt;
+    private Date updatedAt;
     
     public Book() {
     }
@@ -53,5 +53,41 @@ public class Book {
     @PreUpdate
     protected void onUpdate(){
         this.updatedAt = new Date();
+    }
+    
+    public Long getId () {
+    	return this.id;
+    }
+    
+    public String getTitle () {
+    	return this.title;
+    }
+    
+    public void setTitle (String title) {
+    	this.title = title;
+    }
+    
+    public String getDescription () {
+    	return this.description;
+    }
+    
+    public void setDesciption (String desc) {
+    	this.description = desc;
+    }
+    
+    public String getLanguage () {
+    	return this.language;
+    }
+    
+    public void setLanguage (String lang) {
+    	this.language = lang;
+    }
+    
+    public Integer getNumOfPages () {
+    	return this.numberOfPages;
+    }
+    
+    public void setNumOfPages (Integer pages) {
+    	this.numberOfPages = pages;
     }
 }

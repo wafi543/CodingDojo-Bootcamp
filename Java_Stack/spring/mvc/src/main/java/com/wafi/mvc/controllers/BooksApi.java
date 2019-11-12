@@ -29,7 +29,7 @@ public class BooksApi {
         System.out.println(lang);
         System.out.println(numOfPages);
     	Book book = new Book(title, desc, lang, numOfPages);
-        System.out.println(book.title);
+        System.out.println(book.getTitle());
         return bookService.createBook(book);
     }
     

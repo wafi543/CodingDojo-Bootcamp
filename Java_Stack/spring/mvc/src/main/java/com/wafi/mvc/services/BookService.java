@@ -37,10 +37,10 @@ public class BookService {
     public Book updateBook(Long id, String title, String desc, String lang, int pages) {
     	Book b = findBook(id);
         if (b != null) {
-        	b.title = title;
-        	b.description = desc;
-        	b.language = lang;
-        	b.numberOfPages = pages;
+        	b.setTitle(title);;
+        	b.setDesciption(desc);;
+        	b.setLanguage(lang);
+        	b.setNumOfPages(pages);
         	return bookRepository.save(b);
         }else {
         	return null;
