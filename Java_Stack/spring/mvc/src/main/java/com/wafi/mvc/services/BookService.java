@@ -34,7 +34,7 @@ public class BookService {
         }
     }
 
-    public Book updateBook(Long id, String title, String desc, String lang, int pages) {
+    public Book updateBookById(Long id, String title, String desc, String lang, int pages) {
     	Book b = findBook(id);
         if (b != null) {
         	b.setTitle(title);;
@@ -45,6 +45,10 @@ public class BookService {
         }else {
         	return null;
         }
+    }
+    
+    public Book updateBook(Book b) {
+    	return bookRepository.save(b);
     }
     
     public void deleteBook (Long id) {
